@@ -36,6 +36,9 @@ public class Choice {
         }
 
     }
+
+    public Choice getParentChoice() {return this.parentChoice;}
+
     public void setAsFinalChoice() {
         this.isFinalChoice = true;
     }
