@@ -1,4 +1,4 @@
-package quest;
+package choice;
 
 public class FinalChoice extends Choice {
     public FinalChoice(String name) {

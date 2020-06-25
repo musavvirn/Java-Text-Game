@@ -1,4 +1,4 @@
-package quest;
+package choice;
 
 import org.junit.Assert;
 import org.junit.Before;

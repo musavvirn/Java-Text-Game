@@ -1,4 +1,6 @@
-package quest;
+package mission;
+
+import choice.Choice;
 
 public class Mission {
     private String title;

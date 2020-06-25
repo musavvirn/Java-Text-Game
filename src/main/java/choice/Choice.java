@@ -1,19 +1,24 @@
-package quest;
+package choice;
+
+import mission.Mission;
+import mission.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static choice.State.REGULAR;
+
 public class Choice {
     private String name;
     private String activeText = null;
     private String endText = null;
+    protected State state = REGULAR;
     protected Choice parentChoice;
-    protected Choice otherChoice;
+    protected Choice linkedChoice;
     protected Mission initiateMission;
     protected Mission completeMission;
     private ArrayList<Choice> listOfChoices = new ArrayList<Choice>();
-    private boolean isFinalChoice = false;
 
     public Choice(String name) {
         this.name = name;
@@ -37,11 +42,11 @@ public class Choice {
 
     }
 
-    public Choice getParentChoice() {return this.parentChoice;}
-
-    public void setAsFinalChoice() {
-        this.isFinalChoice = true;
+    public void setState(State state) {
+        this.state = state;
     }
+
+    public Choice getParentChoice() {return this.parentChoice;}
 
     public void setInitiateMission(Mission initiateMission) {
         this.initiateMission = initiateMission;
@@ -60,20 +65,8 @@ public class Choice {
     }
 
 
-    public void setOtherChoice(Choice c) {
-        this.otherChoice = c;
-    }
-
-    public void implementChoice() throws InterruptedException {
-        if (this.activeText != null) {
-            System.out.println(this.activeText);
-        }
-
-        Thread.sleep(500);
-        System.out.println(".");
-        Thread.sleep(250);
-        System.out.println(".");
-
+    public void setLinkedChoice(Choice c) {
+        this.linkedChoice = c;
     }
 
     public void addChoice(Choice c) throws Exception {
@@ -97,6 +90,7 @@ public class Choice {
         return this.listOfChoices;
     }
 
+    /* prints next set of choices */
     public void printChoice() {
 
         if (this.listOfChoices.size() != 0) {
@@ -106,14 +100,38 @@ public class Choice {
                 i++;
             }
         }
+        this.printBackOption();
+    }
+
+    /* prints active text when a choice is selected */
+    public void printActiveText() throws InterruptedException {
+        if (this.activeText != null) {
+            System.out.println(this.activeText);
+            Thread.sleep(500);
+            System.out.println(".");
+            Thread.sleep(250);
+            System.out.println(".");
+        } else {
+            Thread.sleep(250);
+            System.out.println(".");
+        }
+    }
+
+    /* print end text for choices that have a text for finishing a taks for example */
+    public void printEndText() {
+        if (this.endText != null) {
+            System.out.println(this.endText);
+        }
+    }
+
+    /* prints (B) Go back option at the end of all choices */
+    private void printBackOption() {
         System.out.println(String.format("(B) (Go back)"));
     }
 
-    private void activateOtherChoice() throws Exception {
-        this.otherChoice.parentChoice.addChoice(this.otherChoice);
-    }
-
-    private void checkAssociatedQuest() throws Exception {
+    /* activate, complete or fail linked mission */
+    public void checkLinkedMission() throws Exception {
+        assert (this.initiateMission != null || this.completeMission != null);
         if (this.initiateMission != null) {
             if (this.initiateMission.getStatus() == Status.UNDISCOVERED) {
                 this.initiateMission.setStatus(Status.DISCOVERED);
@@ -125,17 +143,8 @@ public class Choice {
         }
     }
 
-
-    public void runChoiceSelection() throws Exception {
-        this.checkAssociatedQuest();
-        this.printEndText();
-        this.checkFinalChoice();
-        this.printChoice();
-        this.getUserSelection().runChoiceSelection();
-
-    }
-
-    private Choice getUserSelection() throws Exception {
+    /* Determine user input, either a valid choice, (B), or invalid and promp again */
+    public Choice getUserSelection() throws Exception {
         String input = new Scanner(System.in).next();
         int num = 100;
 
@@ -151,12 +160,11 @@ public class Choice {
                 }
             }
 
-
         Choice c = null;
         try {
             c = this.getChoices().get(num);
             System.out.println(String.format("%d - selected.", num));
-            c.implementChoice();
+            c.printActiveText();
         } catch (Exception e) {
             System.out.println(String.format("Invalid. Choose one from: "));
             this.runChoiceSelection();
@@ -164,30 +172,33 @@ public class Choice {
         return c;
     }
 
-    private void printEndText() {
-        if (this.endText != null) {
-            System.out.println(this.endText);
+    /* If its a final choice, then runs parent's parent choice
+        used by FINAL, FINAL_LINKED States
+     */
+    public void checkFinalChoice() throws Exception {
+        assert (this.listOfChoices.size() == 0);
+
+        if (this.parentChoice.parentChoice != null) {
+            this.parentChoice.parentChoice.removeChoice(this.parentChoice);
+            this.parentChoice.parentChoice.runChoiceSelection();
         }
     }
 
-    private void checkFinalChoice() throws Exception {
-        if (this.listOfChoices.size() == 0) {
-            // Chekcs if this choice ends here, completes a task
-            // then delete it from parent choice list
-            // if it does not complete a task, then this choice still remains with parent
-            if (this.isFinalChoice) {
-                if (this.parentChoice.parentChoice != null) {
-                    if (this.otherChoice != null) {
-                        this.activateOtherChoice();
-                    }
-                    this.parentChoice.parentChoice.removeChoice(this.parentChoice);
-
-                }
-
-            }
-
-            this.parentChoice.parentChoice.runChoiceSelection();
+    /* activates any linked choice, called first everytime during execution of a choice */
+    private void checkLinkedChoice() throws Exception {
+        if (this.linkedChoice != null) {
+            this.linkedChoice.parentChoice.addChoice(this.linkedChoice);
         }
+    }
+
+    /* MAIN FUNCTION
+        checks any linked choice to activate or deactivate first,
+        then executes choice based on State
+     */
+    public void runChoiceSelection() throws Exception {
+        this.checkLinkedChoice();
+        this.state.execute(this);
+
     }
 
 
