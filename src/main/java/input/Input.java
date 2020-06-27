@@ -4,6 +4,9 @@ public enum Input {
     /* B = Go back for choices */
     B,
 
-    /* I = Go to Mission Log */
-    M
+    /* M = Go to Mission Log */
+    M,
+
+    /* I = Go to Inventoru */
+    I
 }

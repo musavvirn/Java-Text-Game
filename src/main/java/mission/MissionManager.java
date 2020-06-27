@@ -45,6 +45,7 @@ public class MissionManager {
     }
 
     public void printMissions() {
+        System.out.println("<< Missions Log >>");
         if (this.listOfActiveMission.size() == 0) {
             System.out.println("No active missions.");
         } else {

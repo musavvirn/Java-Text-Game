@@ -1,5 +1,6 @@
 import choice.Choice;
 import choice.State;
+import inventory.Item;
 import mission.Mission;
 import mission.MissionManager;
 
@@ -67,7 +68,7 @@ public class Main {
 
         Choice c2c = new Choice("Inspect abandoned bag near the gate");
         Choice c2ca = new Choice("Put it in inventory");
-        c2ca.setLinkedChoice(c2ac);
+        c2ca.setLinkedChoice(c2ac);c2ca.setGainItem(new Item("Abandoned bag"));
         Mission q2 = new Mission("Find the owner of the bag.");
         c2ca.setInitiateMission(q2);
         c2aca.setCompleteMission(q2);

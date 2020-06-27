@@ -1,8 +1,11 @@
 package choice;
 
 import input.UserInput;
+import inventory.Inventory;
+import inventory.Item;
 import mission.Mission;
 import mission.Status;
+import printer.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +15,36 @@ import static choice.State.REGULAR;
 public class Choice {
     private String name;
     private String activeText = null;
+    private String endText = null;
+
+    protected State state = REGULAR;
+
+    protected Choice parentChoice;
+    protected Choice linkedChoice;
+    private ArrayList<Choice> listOfChoices = new ArrayList<Choice>();
+
+    protected Mission initiateMission;
+    protected Mission completeMission;
+
+    protected Item gainItem;
 
     public String getEndText() {
         return endText;
+    }
+
+    public void setGainItem(Item i) {
+        this.gainItem = i;
     }
 
     public ArrayList<Choice> getListOfChoices() {
         return listOfChoices;
     }
 
-    private String endText = null;
-    protected State state = REGULAR;
-    protected Choice parentChoice;
-    protected Choice linkedChoice;
-    protected Mission initiateMission;
-    protected Mission completeMission;
-    private ArrayList<Choice> listOfChoices = new ArrayList<Choice>();
+    public void gainItem() throws Exception {
+        if (this.gainItem != null) {
+            Inventory.getInstance().add(this.gainItem);
+        }
+    }
 
     public Choice(String name) {
         this.name = name;
@@ -220,6 +237,7 @@ public class Choice {
         then executes choice based on State
      */
     public void runChoiceSelection() throws Exception {
+        this.gainItem();
         this.checkLinkedChoice();
         this.state.execute(this);
 

@@ -1,5 +1,6 @@
-package choice;
+package printer;
 
+import choice.Choice;
 import input.Input;
 
 /* Handles all printing functions
@@ -8,12 +9,16 @@ import input.Input;
 
 public class Printer {
 
-    public final static Printer printer = new Printer();
+    public final static Printer instance = new Printer();
+    private String COLOR_MAGENTA = "\u001b[34m";
+    private String COLOR_BLUE = "\u001b[35m";
+    private String COLOR_BACK = "\u001b[37m";
+    private String COLOR_END = "\u001b[0m";
 
     private Printer() { }/* prints next set of choices */
 
     public static Printer getInstance() {
-        return printer;
+        return instance;
     }
 
     public void printChoice(Choice choice) throws Exception {
@@ -23,10 +28,10 @@ public class Printer {
             int j = 0;
             for (Choice c : choice.getListOfChoices()) {
                 if (j == 0) {
-                    System.out.println(String.format("\u001b[34m(%d) %s\u001b[0m", i, c.getName()));
+                    System.out.println(String.format(COLOR_MAGENTA + "(%d) %s" + COLOR_END, i, c.getName()));
                     j++;
                 } else {
-                    System.out.println(String.format("\u001b[35m(%d) %s\u001b[0m", i, c.getName()));
+                    System.out.println(String.format(COLOR_BLUE + "(%d) %s" + COLOR_END, i, c.getName()));
                     j--;
                 }
                 i++;
@@ -43,7 +48,7 @@ public class Printer {
 
         /* if this choice is the only child, then run grandparent */
         else {
-            choice.getParentChoice().parentChoice.runChoiceSelection();
+            choice.getParentChoice().getParentChoice().runChoiceSelection();
         }
     }
 
@@ -69,7 +74,7 @@ public class Printer {
     }
 
     /* prints (B) Go back option at the end of all choices */
-    void printBackOption() {
-        System.out.println(String.format("\u001b[37m(%s) (Go back)\u001b[0m", Input.B.toString()));
+    public void printBackOption() {
+        System.out.println(String.format(COLOR_BACK + "(%s) (Go back)" + COLOR_END, Input.B.toString()));
     }
 }

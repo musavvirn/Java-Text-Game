@@ -1,6 +1,7 @@
 package input;
 
 import choice.Choice;
+import inventory.Inventory;
 import mission.MissionManager;
 
 import java.util.Scanner;
@@ -32,7 +33,12 @@ public class UserInput {
             MissionManager.getInstance().printMissions();
             // transition from Mission Log to Choices again
 
-        } else {
+        } else if (input.equalsIgnoreCase(Input.I.toString())) {
+            Inventory.getInstance().printInventory();
+        }
+
+
+        else {
             try {
                 num = Integer.parseInt(input);
             } catch (Exception e) {
