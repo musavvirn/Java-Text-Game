@@ -32,7 +32,7 @@ public class ChoiceTest {
     }
 
     @Test
-    public void testAddChoice() throws Exception {
+    public void testAddChoice1() throws Exception {
         CMain.addChoice(C1); CMain.addChoice(C2);
         Assert.assertEquals(2, CMain.getChoices().size());
 
@@ -45,7 +45,4 @@ public class ChoiceTest {
         CMain.addChoice(C1);
         CMain.addChoice(C1);
     }
-
-
-
 }

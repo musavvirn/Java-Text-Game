@@ -26,8 +26,10 @@ public class Main {
         c1.addChoice(Arrays.asList(c1a, c1b, c1c, c1d));
 
         Choice c1aa = new Choice("Approach the fruit seller");
+        Choice c1ab = new Choice("Give alms to the beggar");
+        c1ab.setState(State.FINAL);
         c1aa.setEndText("The fruit seller barely has any fruits..");
-        c1a.addChoice(c1aa);
+        c1a.addChoice(Arrays.asList(c1aa, c1ab));
         Choice c1aaa = new Choice("Ask him where is all his fruits", "Some folks at the garden don't like him and he can't get his fruits..");
         Choice c1aab = new Choice("Offer to help him with any task", "He asks you to fetch him some fruits from the gardens");
         Choice c1aaba = new Choice("Agree to do it!");
@@ -39,7 +41,6 @@ public class Main {
 
         c1aa.addChoice(Arrays.asList(c1aaa, c1aab));
         c1aab.addChoice(Arrays.asList(c1aaba, c1aabb));
-
 
         Choice c2a = new Choice("Speak to group of soldiers", "Approaching soldiers..");
         Choice c2aa = new Choice("Ask them how their job is", "Well, not much going on here..");

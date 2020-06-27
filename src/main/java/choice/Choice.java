@@ -1,11 +1,12 @@
 package choice;
 
+import input.Input;
+import input.UserInput;
 import mission.Mission;
 import mission.Status;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static choice.State.REGULAR;
 
@@ -91,7 +92,7 @@ public class Choice {
     }
 
     /* prints next set of choices */
-    public void printChoice() {
+    public void printChoice() throws Exception {
 
         if (this.listOfChoices.size() != 0) {
             int i = 0;
@@ -99,8 +100,20 @@ public class Choice {
                 System.out.println(String.format("(%d) %s", i, c.getName()));
                 i++;
             }
+            this.printBackOption();
+
         }
-        this.printBackOption();
+        /* if this choice is not the only child of parent, run parent
+            to make other child choices visible
+         */
+        else if (this.parentChoice.listOfChoices.size() > 1) {
+            this.parentChoice.runChoiceSelection();
+        }
+
+        /* if this choice is the only child, then run grandparent */
+        else {
+            this.parentChoice.parentChoice.runChoiceSelection();
+        }
     }
 
     /* prints active text when a choice is selected */
@@ -126,7 +139,7 @@ public class Choice {
 
     /* prints (B) Go back option at the end of all choices */
     private void printBackOption() {
-        System.out.println(String.format("(B) (Go back)"));
+        System.out.println(String.format("(%s) (Go back)", Input.B.toString()));
     }
 
     /* activate, complete or fail linked mission */
@@ -145,31 +158,7 @@ public class Choice {
 
     /* Determine user input, either a valid choice, (B), or invalid and promp again */
     public Choice getUserSelection() throws Exception {
-        String input = new Scanner(System.in).next();
-        int num = 100;
-
-        // Detect "Go Back" option selected with key - "b" or "B"
-            if (input.equalsIgnoreCase("B")) {
-                this.parentChoice.runChoiceSelection();
-            } else {
-                try {
-                    num = Integer.parseInt(input);
-                } catch (Exception e) {
-                    System.out.println(String.format("Invalid. Choose one from: "));
-                    this.runChoiceSelection();
-                }
-            }
-
-        Choice c = null;
-        try {
-            c = this.getChoices().get(num);
-            System.out.println(String.format("%d - selected.", num));
-            c.printActiveText();
-        } catch (Exception e) {
-            System.out.println(String.format("Invalid. Choose one from: "));
-            this.runChoiceSelection();
-        }
-        return c;
+        return UserInput.getInstance().getUserSelection(this);
     }
 
     /* If its a final choice, then runs parent's parent choice

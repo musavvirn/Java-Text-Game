@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/* Manages Mission log
+    SINGLETON
+ */
+
 public class MissionManager {
     private static MissionManager ourInstance = new MissionManager();
     private static ArrayList<Mission> listOfActiveMission = new ArrayList<>();
@@ -16,7 +20,7 @@ public class MissionManager {
     private MissionManager() {
     }
 
-    public void addQuest(Mission mission) throws Exception {
+    public void addQuest (Mission mission) throws Exception {
         if (!mapOfQuest.containsKey(mission)) {
             mapOfQuest.put(mission, Status.DISCOVERED);
             listOfActiveMission.add(mission);
@@ -38,6 +42,18 @@ public class MissionManager {
             } else throw new Exception("Invalid mission status update.");
 
         } else throw new Exception("Mission Manager did not have initiateMission to begin with.");
+    }
+
+    public void printMissions() {
+        if (this.listOfActiveMission.size() == 0) {
+            System.out.println("No active missions.");
+        } else {
+            int i = 0;
+            for (Mission m : this.listOfActiveMission) {
+                System.out.println(String.format("%d - %s", i, m.getTitle()));
+                i++;
+            }
+        }
     }
 
 }
