@@ -7,6 +7,13 @@ package choice;
 
 public enum State {
 
+    /* REGULAR - choice that leads to other choices */
+    /* FINAL - choice that can only be performed once and is unavailable afterwards
+        ex: finishing a mission
+     */
+    /* LINKED - choice that activates/deactivates other choices */
+    /* LINKED_FINAL - choice that is both linked & final */
+
     REGULAR {
         @Override
         public void execute(Choice c) throws Exception {
