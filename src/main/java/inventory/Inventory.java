@@ -14,7 +14,6 @@ public class Inventory {
     public static Inventory getInstance() {
         return instance;
     }
-
     public void add(Item item) throws Exception {
         if (this.listOfItems.containsKey(item)) {
             throw new Exception("Can't add duplicate item..");
@@ -29,6 +28,7 @@ public class Inventory {
             throw new Exception("Item does not exist in inventory..");
         } else {
             this.listOfItems.remove(item);
+            System.out.println(String.format("• Got rid of %s", item.getName()));
         }
     }
 

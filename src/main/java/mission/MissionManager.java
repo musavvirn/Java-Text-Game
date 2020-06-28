@@ -9,12 +9,12 @@ import java.util.Map;
  */
 
 public class MissionManager {
-    private static MissionManager ourInstance = new MissionManager();
+    private static MissionManager instance = new MissionManager();
     private static ArrayList<Mission> listOfActiveMission = new ArrayList<>();
     private static Map<Mission, Status> mapOfQuest = new HashMap<>();
 
     public static MissionManager getInstance() {
-        return ourInstance;
+        return instance;
     }
 
     private MissionManager() {
@@ -24,7 +24,7 @@ public class MissionManager {
         if (!mapOfQuest.containsKey(mission)) {
             mapOfQuest.put(mission, Status.DISCOVERED);
             listOfActiveMission.add(mission);
-            System.out.println(String.format("New mission added: %s", mission.getTitle()));
+            System.out.println(String.format("New mission added: %s", mission.getName()));
         } else throw new Exception("Mission already exists in the Mission Log.");
     }
 
@@ -32,11 +32,11 @@ public class MissionManager {
         if (mapOfQuest.containsKey(mission)) {
             mapOfQuest.replace(mission, status);
             if (status == Status.COMPLETED) {
-                System.out.println(String.format("Mission completed: %s", mission.getTitle()));
+                System.out.println(String.format("Mission completed: %s", mission.getName()));
                 listOfActiveMission.remove(mission);
 
             } else if (status == Status.FAILED) {
-                System.out.println(String.format("Mission failed: %s", mission.getTitle()));
+                System.out.println(String.format("Mission failed: %s", mission.getName()));
                 listOfActiveMission.remove(mission);
 
             } else throw new Exception("Invalid mission status update.");
@@ -51,7 +51,7 @@ public class MissionManager {
         } else {
             int i = 0;
             for (Mission m : this.listOfActiveMission) {
-                System.out.println(String.format("%d - %s", i, m.getTitle()));
+                System.out.println(String.format("%d - %s", i, m.getName()));
                 i++;
             }
         }

@@ -3,16 +3,16 @@ package mission;
 import choice.Choice;
 
 public class Mission {
-    private String title;
+    private String name;
     private Status status = Status.UNDISCOVERED;
     private Choice startingChoice = new Choice("Starting mission..");
 
-    public Mission(String title) {
-        this.title = title;
+    public Mission(String name) {
+        this.name = name;
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getName() {
+        return this.name;
     }
 
     public Status getStatus() {
@@ -36,27 +36,16 @@ public class Mission {
         }
     }
 
-
     public Choice getStartingChoice() {
         return this.startingChoice;
     }
 
-
     public void start() throws Exception {
-        String s = String.format("<< %s has started. >>", this.title);
+        String s = String.format("<< %s has started. >>", this.name);
         System.out.println(s);
         System.out.println();
         this.startingChoice.runChoiceSelection();
 
     }
-
-    public void complete() {
-        // check conditions to finish initiateMission
-    }
-
-
-
-
-
 
 }

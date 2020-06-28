@@ -6,10 +6,8 @@ import inventory.Item;
 import mission.Mission;
 import mission.Status;
 import printer.Printer;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static choice.State.REGULAR;
 
 public class Choice {
@@ -27,6 +25,7 @@ public class Choice {
     protected Mission completeMission;
 
     protected Item gainItem;
+    protected Item useItem;
 
     public String getEndText() {
         return endText;
@@ -36,6 +35,13 @@ public class Choice {
         this.gainItem = i;
     }
 
+    public Item getGainItem() {return  this.gainItem;}
+    public Item getUseItem() {return this.useItem;}
+
+    public void setUseItem(Item i) {
+        this.useItem = i;
+    }
+
     public ArrayList<Choice> getListOfChoices() {
         return listOfChoices;
     }
@@ -43,6 +49,12 @@ public class Choice {
     public void gainItem() throws Exception {
         if (this.gainItem != null) {
             Inventory.getInstance().add(this.gainItem);
+        }
+    }
+
+    public void useItem() throws Exception {
+        if (this.useItem != null) {
+            Inventory.getInstance().remove(this.useItem);
         }
     }
 
@@ -137,63 +149,6 @@ public class Choice {
         Printer.getInstance().printBackOption();
     }
 
-//    /* prints next set of choices */
-//    public void printChoice() throws Exception {
-//
-//        if (this.listOfChoices.size() != 0) {
-//            int i = 0; int j = 0;
-//            for (Choice c : this.listOfChoices) {
-//                if (j == 0) {
-//                    System.out.println(String.format("\u001b[34m(%d) %s\u001b[0m", i, c.getName()));
-//                    j++;
-//                } else {
-//                    System.out.println(String.format("\u001b[35m(%d) %s\u001b[0m", i, c.getName()));
-//                    j--;
-//                }
-//                i++;
-//            }
-//
-//            this.printBackOption();
-//        }
-//        /* if this choice is not the only child of parent, run parent
-//            to make other child choices visible
-//         */
-//        else if (this.parentChoice.listOfChoices.size() > 1) {
-//            this.parentChoice.runChoiceSelection();
-//        }
-//
-//        /* if this choice is the only child, then run grandparent */
-//        else {
-//            this.parentChoice.parentChoice.runChoiceSelection();
-//        }
-//    }
-//
-//    /* prints active text when a choice is selected */
-//    public void printActiveText() throws InterruptedException {
-//        if (this.activeText != null) {
-//            System.out.println(this.activeText);
-//            Thread.sleep(500);
-//            System.out.println(".");
-//            Thread.sleep(250);
-//            System.out.println(".");
-//        } else {
-//            Thread.sleep(250);
-//            System.out.println(".");
-//        }
-//    }
-//
-//    /* print end text for choices that have a text for finishing a taks for example */
-//    public void printEndText() {
-//        if (this.endText != null) {
-//            System.out.println(this.endText);
-//        }
-//    }
-//
-//    /* prints (B) Go back option at the end of all choices */
-//    private void printBackOption() {
-//        System.out.println(String.format("\u001b[37m(%s) (Go back)\u001b[0m", Input.B.toString()));
-//    }
-
     /* activate, complete or fail linked mission */
     public void checkLinkedMission() throws Exception {
         assert (this.initiateMission != null || this.completeMission != null);
@@ -237,11 +192,9 @@ public class Choice {
         then executes choice based on State
      */
     public void runChoiceSelection() throws Exception {
+        this.useItem();
         this.gainItem();
         this.checkLinkedChoice();
         this.state.execute(this);
-
     }
-
-
 }
