@@ -149,7 +149,7 @@ public class Main {
         q1.getStartingChoice().addChoice(lc1);
 
         MissionManager.getInstance().addQuest(q1);
-        q1.start();
+        q1.activate();
 
 
 

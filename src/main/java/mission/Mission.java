@@ -40,10 +40,12 @@ public class Mission {
         return this.startingChoice;
     }
 
-    public void start() throws Exception {
+    public void activate() throws Exception {
         String s = String.format("<< %s has started. >>", this.name);
         System.out.println(s);
         System.out.println();
+
+        /* only used for the Main objective in the start of the game */
         this.startingChoice.runChoiceSelection();
 
     }
