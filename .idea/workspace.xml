@@ -204,26 +204,30 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1593259976551" />
+    <state x="413" y="131" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1593477207086">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="413" y="131" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.768@0.0.1366.768" timestamp="1593477207086" />
     <state x="389" y="125" key="FileChooserDialogImpl" timestamp="1593412925936">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="389" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593412925936" />
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom" timestamp="1593414991739">
+    <state width="1323" height="170" key="GridCell.Tab.0.bottom" timestamp="1593477207165">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593414991739" />
-    <state width="1323" height="170" key="GridCell.Tab.0.center" timestamp="1593414991739">
+    <state width="1323" height="170" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
+    <state width="1323" height="170" key="GridCell.Tab.0.center" timestamp="1593477207165">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593414991739" />
-    <state width="1323" height="170" key="GridCell.Tab.0.left" timestamp="1593414991739">
+    <state width="1323" height="170" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
+    <state width="1323" height="170" key="GridCell.Tab.0.left" timestamp="1593477207165">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593414991739" />
-    <state width="1323" height="170" key="GridCell.Tab.0.right" timestamp="1593414991739">
+    <state width="1323" height="170" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
+    <state width="1323" height="170" key="GridCell.Tab.0.right" timestamp="1593477207165">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593414991739" />
+    <state width="1323" height="170" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1593412473704">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -236,6 +240,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="65" y="4" key="new project wizard/0.0.1366.768@0.0.1366.768" timestamp="1593395204410" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1593416956195">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1593416956195" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
