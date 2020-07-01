@@ -54,13 +54,13 @@
       <recent name="mission" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GameScene">
-    <configuration name="GameScene" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.GameScene" />
+  <component name="RunManager" selected="Gradle.LocationTest">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="graph.Main" />
       <module name="RTSEngine_main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gui.*" />
+          <option name="PATTERN" value="graph.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -68,72 +68,96 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="RTSEngine_main" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="ChoiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;choice.ChoiceTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="Man" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bla.Man" />
-      <module name="RTSEngine_main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bla.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="LocationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;graph.LocationTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="ChoiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RTSEngine_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bla.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="choice" />
-      <option name="MAIN_CLASS_NAME" value="choice.ChoiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="LocationTest.testAddNode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;graph.LocationTest.testAddNode&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="ChoiceTest.testRunChoice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="RTSEngine_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bla.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="choice" />
-      <option name="MAIN_CLASS_NAME" value="choice.ChoiceTest" />
-      <option name="METHOD_NAME" value="testRunChoice" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="LocationTest.testRemoveVertex" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;graph.LocationTest.testRemoveVertex&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Man" />
-      <item itemvalue="Application.GameScene" />
-      <item itemvalue="JUnit.ChoiceTest.testRunChoice" />
-      <item itemvalue="JUnit.ChoiceTest" />
+      <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Gradle.LocationTest.testAddNode" />
+      <item itemvalue="Gradle.LocationTest" />
+      <item itemvalue="Gradle.LocationTest.testRemoveVertex" />
+      <item itemvalue="Gradle.ChoiceTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameScene" />
-        <item itemvalue="Application.Man" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ChoiceTest" />
-        <item itemvalue="JUnit.ChoiceTest.testRunChoice" />
+        <item itemvalue="Gradle.LocationTest" />
+        <item itemvalue="Gradle.LocationTest.testAddNode" />
+        <item itemvalue="Gradle.ChoiceTest" />
+        <item itemvalue="Gradle.LocationTest.testRemoveVertex" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -149,38 +173,6 @@
       <updated>1592834437233</updated>
     </task>
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 02m 20s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 03m 41s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 03m 51s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 04m 24s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 08m 15s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 09m 13s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 10m 30s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 14h 11m 46s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 20h 40m 16s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ChoiceTest - 2020.06.25 at 20h 43m 40s.xml">
-      <configuration name="ChoiceTest" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -212,22 +204,38 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="389" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593412925936" />
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom" timestamp="1593477207165">
+    <state width="1323" height="193" key="GridCell.Tab.0.bottom" timestamp="1593569431234">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
-    <state width="1323" height="170" key="GridCell.Tab.0.center" timestamp="1593477207165">
+    <state width="1323" height="193" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593569431234" />
+    <state width="1323" height="193" key="GridCell.Tab.0.center" timestamp="1593569431234">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
-    <state width="1323" height="170" key="GridCell.Tab.0.left" timestamp="1593477207165">
+    <state width="1323" height="193" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593569431234" />
+    <state width="1323" height="193" key="GridCell.Tab.0.left" timestamp="1593569431234">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
-    <state width="1323" height="170" key="GridCell.Tab.0.right" timestamp="1593477207165">
+    <state width="1323" height="193" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593569431234" />
+    <state width="1323" height="193" key="GridCell.Tab.0.right" timestamp="1593569431234">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593477207165" />
+    <state width="1323" height="193" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593569431234" />
+    <state width="1323" height="237" key="GridCell.Tab.1.bottom" timestamp="1593483839117">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="237" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
+    <state width="1323" height="237" key="GridCell.Tab.1.center" timestamp="1593483839117">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="237" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
+    <state width="1323" height="237" key="GridCell.Tab.1.left" timestamp="1593483839117">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="237" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
+    <state width="1323" height="237" key="GridCell.Tab.1.right" timestamp="1593483839117">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="237" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1593412473704">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -253,6 +261,10 @@
         <watch expression="this.listOfChoices" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RTSEngine$ChoiceTest.ic" NAME="ChoiceTest Coverage Results" MODIFIED="1593568660646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/RTSEngine$LocationTest.ic" NAME="LocationTest Coverage Results" MODIFIED="1593569431207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

@@ -1,6 +1,6 @@
 package graph;
 
-public class Vertex {
+public abstract class Vertex {
     private String label;
 
     public Vertex(String label) {
