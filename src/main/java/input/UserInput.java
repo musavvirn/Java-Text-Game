@@ -1,6 +1,7 @@
 package input;
 
 import choice.Choice;
+import graph.MapManager;
 import inventory.Inventory;
 import mission.MissionManager;
 
@@ -34,7 +35,9 @@ public class UserInput {
             // transition from Mission Log to Choices again
 
         } else if (input.equalsIgnoreCase(Input.I.toString())) {
-            Inventory.getInstance().printInventory();
+            Inventory.getInstance().print();
+        } else if (input.equalsIgnoreCase(Input.L.toString())) {
+            MapManager.getInstance().print();
         }
 
 

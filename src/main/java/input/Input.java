@@ -8,5 +8,8 @@ public enum Input {
     M,
 
     /* I = Go to Inventoru */
-    I
+    I,
+
+    /* L = Go to Map/Location Manager */
+    L
 }
