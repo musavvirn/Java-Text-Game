@@ -2,6 +2,9 @@ package graph;
 
 import java.util.*;
 
+/** Graph holds a Map of Vertex, each of which has a set of vertex that represents conenctions.
+ *  When a node is added or removed, it also adds/removes connections to that node from other nodes.
+ */
 public abstract class Graph {
     private HashMap<Vertex, HashSet<Vertex>> map;
     private int size;
@@ -15,10 +18,18 @@ public abstract class Graph {
         return this.size;
     }
 
+    public HashMap<Vertex, HashSet<Vertex>> getMap() {
+        return this.map;
+    }
+
     public Set<Vertex> get(Vertex v) {
         return this.map.get(v);
     }
 
+    /* Adds a new node with a list of given vertices, and adds more nodes if
+        some vertices don't exist in the graph already.
+
+     */
     public void addNode(Vertex source, List<Vertex> list) throws Exception {
         if (!this.map.containsKey(source)) {
             this.map.put(source, new HashSet<>(list));
@@ -31,9 +42,10 @@ public abstract class Graph {
                 }
             }
         }
-
         this.size = this.map.keySet().size();
     }
+
+    /* Removes a node and and removes it from vertices list of other nodes */
 
     public void removeNode(Vertex source) throws Exception {
         for (Vertex v : this.map.get(source)) {
@@ -44,6 +56,8 @@ public abstract class Graph {
         /* remove a Node should also remove the connections to this node from others */
         this.size = this.map.keySet().size();
     }
+
+    /* Adds a vertex to an existing node */
     public void addVertex(Vertex source, Vertex v) throws Exception {
         if (source.equals(v)) {
             throw new Exception("Source node and vertex are the same..");
@@ -53,6 +67,7 @@ public abstract class Graph {
         }
    }
 
+   /* Removes a vertex from an existing node */
    public void removeVertex(Vertex source, Vertex v) throws Exception {
        if (source.equals(v)) {
            throw new Exception("Source node and vertex are the same..");
@@ -62,6 +77,7 @@ public abstract class Graph {
        }
    }
 
+   /* Returns the list of vertex for a given node */
    public int getNodeSize(Vertex v) {
         return this.get(v).size();
    }
