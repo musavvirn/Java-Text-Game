@@ -8,7 +8,7 @@ import java.util.Random;
 public class Main extends JPanel {
 
     public static void main(String[] args) throws Exception {
-        Location L1 = new Location();
+        MapManager L1 = new MapManager();
         City C1 = new City("Sasau"), C2 = new City("Rattay"), C3 = new City("Ledetchko");
         Village V1 = new Village("Sasau Farms"), V2 = new Village("South Road Farms"),
                 V3 = new Village("Rattay Countryside"), V4 = new Village("Terak Village");
@@ -44,12 +44,5 @@ public class Main extends JPanel {
             l.setBounds(v.getXY()[0], v.getXY()[1], 80, 20);
             panel.add(l);
         }
-
-
-
-
-
     }
-
-
 }

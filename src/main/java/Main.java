@@ -1,5 +1,8 @@
 import choice.Choice;
 import choice.State;
+import graph.City;
+import graph.MapManager;
+import graph.Village;
 import inventory.Item;
 import mission.Mission;
 import mission.MissionManager;
@@ -13,6 +16,17 @@ public class Main {
         System.out.println("Game started.. ");
         Scanner input = new Scanner(System.in);
         Thread.sleep(2000);
+
+        MapManager M1 = MapManager.getInstance();
+
+        City C1 = new City("Sasau"), C2 = new City("Rattay"), C3 = new City("Ledetchko");
+        Village V1 = new Village("Sasau Farms"), V2 = new Village("South Road Farms"),
+                V3 = new Village("Rattay Countryside"), V4 = new Village("Terak Village");
+
+        M1.addNode(C1, Arrays.asList(C2, V1, V2, V3));
+        M1.addNode(C3, Arrays.asList(C2, V2, V4));
+        M1.addVertex(V1, V2);
+        M1.addVertex(V1, V3);
 
         Mission q1 = new Mission("Main objective");
 

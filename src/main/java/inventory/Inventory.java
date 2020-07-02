@@ -1,9 +1,11 @@
 package inventory;
 
+import printer.PrintItems;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Inventory {
+public class Inventory implements PrintItems {
     private final static Inventory instance = new Inventory();
     private HashMap<Item, Integer> listOfItems;
 
@@ -32,7 +34,8 @@ public class Inventory {
         }
     }
 
-    public void printInventory() {
+    @Override
+    public void print() {
         System.out.println("<< Inventory >>");
         if (this.listOfItems.isEmpty()) {
             System.out.println("Inventory is empty..");

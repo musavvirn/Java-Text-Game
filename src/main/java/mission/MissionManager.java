@@ -1,5 +1,7 @@
 package mission;
 
+import printer.PrintItems;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +10,7 @@ import java.util.Map;
     SINGLETON
  */
 
-public class MissionManager {
+public class MissionManager implements PrintItems {
     private static MissionManager instance = new MissionManager();
     private static ArrayList<Mission> listOfActiveMission = new ArrayList<>();
     private static Map<Mission, Status> mapOfQuest = new HashMap<>();
@@ -44,7 +46,8 @@ public class MissionManager {
         } else throw new Exception("Mission Manager did not have initiateMission to begin with.");
     }
 
-    public void printMissions() {
+    @Override
+    public void print() {
         System.out.println("<< Missions Log >>");
         if (this.listOfActiveMission.size() == 0) {
             System.out.println("No active missions.");

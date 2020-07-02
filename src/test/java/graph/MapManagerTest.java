@@ -9,7 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 
-public class LocationTest {
+public class MapManagerTest {
 
     @Mock
     Village V1, V2, V3;
@@ -18,7 +18,7 @@ public class LocationTest {
     City C1, C2;
 
     @InjectMocks
-    Location L1;
+    MapManager L1;
 
 //    Village V1 = new Village(""), V2 = new Village(""), V3 = new Village("");
 //    City C1 = new City(""), C2 = new City("");
