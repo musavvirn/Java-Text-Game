@@ -14,6 +14,7 @@ public abstract class Graph {
         this.size = 0;
     }
 
+
     public int getSize() {
         return this.size;
     }

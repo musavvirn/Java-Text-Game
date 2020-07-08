@@ -31,7 +31,7 @@ public class UserInput {
             choice.getParentChoice().runChoiceSelection();
 
         } else if (input.equalsIgnoreCase(Input.M.toString())) {
-            MissionManager.getInstance().printMissions();
+            MissionManager.getInstance().print();
             // transition from Mission Log to Choices again
 
         } else if (input.equalsIgnoreCase(Input.I.toString())) {
