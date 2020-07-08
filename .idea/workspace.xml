@@ -30,9 +30,9 @@
       <list>
         <option value="Singleton" />
         <option value="Enum" />
-        <option value="AnnotationType" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -43,34 +43,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TreeDisplay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../YorkU/2020 Summer/EECS 2011 Data Struct/Ass-1" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="mission" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Gradle.MapManagerTest">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="RTSEngine_main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graph.Main" />
-      <module name="RTSEngine_main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,12 +81,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="LocationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;graph.LocationTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;graph.MapManagerTest&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -113,12 +100,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="LocationTest.testAddNode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapManagerTest.testMapManagerTravelMethods" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;graph.LocationTest.testAddNode&quot;" />
+        <option name="scriptParameters" value="--tests &quot;graph.MapManagerTest.testMapManagerTravelMethods&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -132,12 +119,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="LocationTest.testRemoveVertex" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapManagerTest.testgetExploredPercent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;graph.LocationTest.testRemoveVertex&quot;" />
+        <option name="scriptParameters" value="--tests &quot;graph.MapManagerTest.testgetExploredPercent&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -153,18 +140,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main (1)" />
-      <item itemvalue="Gradle.LocationTest.testAddNode" />
-      <item itemvalue="Gradle.LocationTest" />
-      <item itemvalue="Gradle.LocationTest.testRemoveVertex" />
       <item itemvalue="Gradle.ChoiceTest" />
+      <item itemvalue="Gradle.MapManagerTest" />
+      <item itemvalue="Gradle.MapManagerTest.testgetExploredPercent" />
+      <item itemvalue="Gradle.MapManagerTest.testMapManagerTravelMethods" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Gradle.LocationTest" />
-        <item itemvalue="Gradle.LocationTest.testAddNode" />
+        <item itemvalue="Gradle.MapManagerTest" />
+        <item itemvalue="Gradle.MapManagerTest.testMapManagerTravelMethods" />
+        <item itemvalue="Gradle.MapManagerTest.testgetExploredPercent" />
         <item itemvalue="Gradle.ChoiceTest" />
-        <item itemvalue="Gradle.LocationTest.testRemoveVertex" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -181,20 +168,15 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView" selected-index="1">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="WindowStateProjectService">
     <state x="488" y="90" key="#com.intellij.ide.util.MemberChooser" timestamp="1593732430776">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="90" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1593732430776" />
+    <state x="413" y="160" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1594100989314">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="413" y="160" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1594100989314" />
     <state x="320" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593731845086">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -207,50 +189,63 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.768@0.0.1366.768" timestamp="1593477207086" />
-    <state x="389" y="125" key="FileChooserDialogImpl" timestamp="1593412925936">
+    <state x="389" y="125" key="FileChooserDialogImpl" timestamp="1593841537771">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="389" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593412925936" />
-    <state width="1323" height="240" key="GridCell.Tab.0.bottom" timestamp="1593732839930">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="389" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593841537771" />
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1323" height="240" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593732839930" />
-    <state width="1323" height="240" key="GridCell.Tab.0.center" timestamp="1593732839930">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.0.bottom/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
+    <state width="1323" height="256" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593735705043" />
+    <state width="1877" height="360" key="GridCell.Tab.0.center" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1323" height="240" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593732839930" />
-    <state width="1323" height="240" key="GridCell.Tab.0.left" timestamp="1593732839930">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.0.center/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
+    <state width="1323" height="256" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1593735705043" />
+    <state width="1877" height="360" key="GridCell.Tab.0.left" timestamp="1594120350215">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1323" height="240" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593732839930" />
-    <state width="1323" height="240" key="GridCell.Tab.0.right" timestamp="1593732839930">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.0.left/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350215" />
+    <state width="1323" height="256" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1593735705043" />
+    <state width="1877" height="360" key="GridCell.Tab.0.right" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1323" height="240" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593732839930" />
-    <state width="1323" height="237" key="GridCell.Tab.1.bottom" timestamp="1593483839117">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.0.right/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
+    <state width="1323" height="256" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1593735705043" />
+    <state width="1877" height="360" key="GridCell.Tab.1.bottom" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1877" height="360" key="GridCell.Tab.1.bottom/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
     <state width="1323" height="237" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
-    <state width="1323" height="237" key="GridCell.Tab.1.center" timestamp="1593483839117">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.1.center" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1877" height="360" key="GridCell.Tab.1.center/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
     <state width="1323" height="237" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
-    <state width="1323" height="237" key="GridCell.Tab.1.left" timestamp="1593483839117">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.1.left" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1877" height="360" key="GridCell.Tab.1.left/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
     <state width="1323" height="237" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
-    <state width="1323" height="237" key="GridCell.Tab.1.right" timestamp="1593483839117">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1877" height="360" key="GridCell.Tab.1.right" timestamp="1594120350216">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1877" height="360" key="GridCell.Tab.1.right/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594120350216" />
     <state width="1323" height="237" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1593483839117" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1593412473704">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="-1149" y="50" key="SettingsEditor" timestamp="1594109607485">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="-1149" y="50" key="SettingsEditor/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594109607485" />
     <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1593412473704" />
     <state x="294" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1593413435281">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="294" y="62" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.768@0.0.1366.768" timestamp="1593413435281" />
+    <state x="-1189" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1594117026639">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1189" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594117026639" />
     <state x="65" y="4" key="new project wizard" timestamp="1593395204410">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
