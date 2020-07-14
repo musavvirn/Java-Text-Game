@@ -1,7 +1,6 @@
 package graph;
 
 import printer.PrintItems;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +30,7 @@ public class MapManager extends Graph implements PrintItems {
     * */
 
 
-    /**  @return current location
+    /**  @return Vertex: current
      */
     public Vertex getCurrent() {
         return this.current;
@@ -44,9 +43,9 @@ public class MapManager extends Graph implements PrintItems {
 
 
     /** travel to vertex
-     * can only travel to locations that are discovered and conencted to current vertex
+     * can only travel to locations that are discovered and connected to current vertex
      *        throw exception if can't travel
-     *  @return the vertex travelled to
+     *  @return Vertex: destination
      */
     public Vertex travelTo(Vertex v) {
         if (this.getTravelPointsList().contains(v) && this.current != v) {
@@ -58,14 +57,14 @@ public class MapManager extends Graph implements PrintItems {
         return v;
     }
 
-    /**  @return possible list of travel vertexes from current vertex
+    /**  @return List: possible list of travel vertices from current vertex
      */
     public Set<Vertex> getTravelPointsList() {
         return this.get(current);
     }
 
 
-    /**  @return all past visited locations
+    /**  @return List: past visited locations
      */
     public List<Vertex> getVisitedLocations() {
         return this.visitedPointsList;
@@ -83,13 +82,10 @@ public class MapManager extends Graph implements PrintItems {
 
     /**
      *
-     * @return double of percentage of total locations available;
+     * @return double: explored percentage of total locations available;
      */
     public double getExploredPercent() {
         double n = this.visitedPointsList.size() / this.getSize();
         return n;
     }
-
-
-
 }
