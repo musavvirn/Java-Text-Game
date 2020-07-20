@@ -43,7 +43,11 @@ public class MissionManager implements PrintItems {
 
             } else throw new Exception("Invalid mission status update.");
 
-        } else throw new Exception("Mission Manager did not have initiateMission to begin with.");
+        } else {
+            mapOfQuest.replace(mission, status);
+        }
+
+        //else throw new Exception("Mission Manager did not have this mission to begin with.");
     }
 
     @Override

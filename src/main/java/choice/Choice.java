@@ -102,6 +102,9 @@ public class Choice {
         this.completeMission = q;
     }
 
+    public Mission getCompleteMission() {return this.completeMission;}
+    public Mission getInitiateMission() {return this.initiateMission;}
+
 
     public void setLinkedChoice(Choice c) {
         this.linkedChoice = c;

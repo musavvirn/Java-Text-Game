@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static choice.State.FINAL;
+import static choice.State.LINKED_FINAL;
+
 public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Game started.. ");
@@ -42,10 +45,9 @@ public class Main {
         Choice c1d = new Choice("Visit the Mosque courtyard");
 
         c1.addChoice(Arrays.asList(c1a, c1b, c1c, c1d));
-
         Choice c1aa = new Choice("Approach the fruit seller");
         Choice c1ab = new Choice("Give alms to the beggar");
-        c1ab.setState(State.FINAL);
+        c1ab.setState(FINAL);
         c1aa.setEndText("The fruit seller barely has any fruits..");
         c1a.addChoice(Arrays.asList(c1aa, c1ab));
         Choice c1aaa = new Choice("Ask him where is all his fruits", "Some folks at the garden don't like him and he can't get his fruits..");
@@ -56,6 +58,21 @@ public class Main {
         Mission m3 = new Mission("Deliver 3 baskets of fruits from the gardens to the seller");
         c1aaba.setState(State.LINKED_FINAL);
         c1aaba.setInitiateMission(m3);
+
+        Choice c1ba = new Choice("Pick up fruits in baskets", "How many baskets to fill..?");
+        c1b.addChoice(c1ba);
+        Choice c1baa = new Choice("Fill 3 baskets"); Choice c1bab = new Choice("Fill 4 baskets");
+        c1baa.setState(FINAL); c1bab.setState(FINAL);
+        c1ba.addChoice(c1baa); c1ba.addChoice(c1bab);
+
+        Item fruitBasket3 = new Item("3 Fruit baskets"); Item fruitBasket4 = new Item("4 Fruit baskets");
+        c1baa.setGainItem(fruitBasket3); c1bab.setGainItem(fruitBasket4);
+
+        Choice c1aac = new Choice("Hand over 3 fruit baskets"), c1aad = new Choice("Hand over 4 fruit baskets");
+        c1baa.setLinkedChoice(c1aac);c1bab.setLinkedChoice(c1aad);
+        c1aac.setState(LINKED_FINAL); c1aad.setState(LINKED_FINAL);
+        c1aac.setParentChoice(c1aa); c1aad.setParentChoice(c1aa);c1aac.setUseItem(fruitBasket3);c1aad.setUseItem(fruitBasket4);
+        c1aac.setCompleteMission(m3); c1aad.setCompleteMission(m3);
 
         c1aa.addChoice(Arrays.asList(c1aaa, c1aab));
         c1aab.addChoice(Arrays.asList(c1aaba, c1aabb));
@@ -76,13 +93,13 @@ public class Main {
 
 
         Choice c2abb = new Choice("Surrender and apologize", "I'm sorry, I'll do whatever you ask!..");
-        c2abb.setState(State.FINAL);
+        c2abb.setState(FINAL);
         c2a.addChoice(Arrays.asList(c2aa, c2ab));
         c2ab.addChoice(Arrays.asList(c2aba, c2abb));
 
         Choice c2b = new Choice("Take the West path into the farm");
         Choice c2ba = new Choice("Inspect sheep", "Inspecting..");
-        c2ba.setState(State.FINAL);
+        c2ba.setState(FINAL);
         c2b.addChoice(Arrays.asList(c2ba));
 
         Choice c2c = new Choice("Inspect abandoned bag near the gate");

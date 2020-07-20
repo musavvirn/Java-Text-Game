@@ -2,6 +2,7 @@ package printer;
 
 import choice.Choice;
 import input.Input;
+import mission.Status;
 
 /* Handles all printing functions
     SINGLETON
@@ -27,14 +28,18 @@ public class Printer {
             int i = 0;
             int j = 0;
             for (Choice c : choice.getListOfChoices()) {
-                if (j == 0) {
-                    System.out.println(String.format(COLOR_MAGENTA + "(%d) %s" + COLOR_END, i, c.getName()));
-                    j++;
-                } else {
-                    System.out.println(String.format(COLOR_BLUE + "(%d) %s" + COLOR_END, i, c.getName()));
-                    j--;
+                if (c.getCompleteMission() == null || c.getCompleteMission().getStatus() != Status.UNDISCOVERED) {
+                    if (j == 0) {
+                        System.out.println(String.format(COLOR_MAGENTA + "(%d) %s" + COLOR_END, i, c.getName()));
+                        j++;
+                    } else {
+                        System.out.println(String.format(COLOR_BLUE + "(%d) %s" + COLOR_END, i, c.getName()));
+                        j--;
+                    }
+                    i++;
+
                 }
-                i++;
+
             }
 
             this.printBackOption();
