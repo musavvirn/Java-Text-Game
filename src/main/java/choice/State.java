@@ -8,6 +8,7 @@ package choice;
 public enum State {
 
     /* REGULAR - choice that leads to other choices */
+
     /* FINAL - choice that can only be performed once and is unavailable afterwards
         ex: finishing a mission
      */
@@ -56,5 +57,5 @@ public enum State {
     /* State determines which version of choice execution is performed
 
      */
-    public void execute(Choice choice) throws Exception {}
+    public void  execute(Choice choice) throws Exception {}
 }

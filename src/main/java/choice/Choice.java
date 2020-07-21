@@ -19,6 +19,7 @@ public class Choice {
 
     protected Choice parentChoice;
     protected Choice linkedChoice;
+    protected Choice linkedDeactivateChoice;
     private ArrayList<Choice> listOfChoices = new ArrayList<Choice>();
 
     protected Mission initiateMission;
@@ -34,6 +35,7 @@ public class Choice {
     public void setGainItem(Item i) {
         this.gainItem = i;
     }
+    public void setLinkedDeactivateChoice(Choice c) {this.linkedDeactivateChoice = c;}
 
     public Item getGainItem() {return  this.gainItem;}
     public Item getUseItem() {return this.useItem;}
@@ -177,18 +179,34 @@ public class Choice {
     public void checkFinalChoice() throws Exception {
         assert (this.listOfChoices.size() == 0);
 
+
         if (this.parentChoice.parentChoice != null) {
-            this.parentChoice.parentChoice.removeChoice(this.parentChoice);
-            this.parentChoice.parentChoice.runChoiceSelection();
+            if (this.parentChoice.listOfChoices.size() > 1) {
+                this.parentChoice.removeChoice(this);
+                this.parentChoice.runChoiceSelection();
+            } else {
+                this.parentChoice.parentChoice.removeChoice(this.parentChoice);
+                this.parentChoice.parentChoice.runChoiceSelection();
+
+            }
+
         }
+//        if (this.parentChoice.parentChoice != null) {
+//
+//            this.parentChoice.parentChoice.removeChoice(this.parentChoice);
+//            this.parentChoice.parentChoice.runChoiceSelection();
+//        }
     }
 
     /* activates any linked choice, called first everytime during execution of a choice */
     private void checkLinkedChoice() throws Exception {
-        if (this.linkedChoice != null) {
-            this.linkedChoice.parentChoice.addChoice(this.linkedChoice);
-        }
+        this.linkedChoice.parentChoice.addChoice(this.linkedChoice);
     }
+
+    private void checkLinkedDeactivateChoice() {
+        this.linkedDeactivateChoice.parentChoice.removeChoice(this.linkedDeactivateChoice);
+    }
+
 
     /* MAIN FUNCTION
         checks any linked choice to activate or deactivate first,
@@ -197,7 +215,14 @@ public class Choice {
     public void runChoiceSelection() throws Exception {
         this.useItem();
         this.gainItem();
-        this.checkLinkedChoice();
+        if (this.linkedChoice != null) {
+            this.checkLinkedChoice();
+        }
+
+        if (this.linkedDeactivateChoice != null) {
+            this.checkLinkedDeactivateChoice();
+        }
+
         this.state.execute(this);
     }
 }
