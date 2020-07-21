@@ -28,7 +28,7 @@ public class UserInput {
 
         // Detect "Go Back" option selected with key - "b" or "B"
         if (input.equalsIgnoreCase(Input.B.toString())) {
-            choice.getParentChoice().runChoiceSelection();
+            choice.getParent().runChoiceSelection();
 
         } else if (input.equalsIgnoreCase(Input.M.toString())) {
             MissionManager.getInstance().print();

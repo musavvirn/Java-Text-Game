@@ -11,7 +11,7 @@ public class FinalChoice extends Choice {
 
     @Override
     public void runChoiceSelection() throws Exception {
-        this.parentChoice.parentChoice.removeChoice(this.parentChoice);
-        this.parentChoice.parentChoice.runChoiceSelection();
+        this.parent.parent.removeChoice(this.parent);
+        this.parent.parent.runChoiceSelection();
     }
 }

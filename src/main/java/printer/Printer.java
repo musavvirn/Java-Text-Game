@@ -11,6 +11,8 @@ import mission.Status;
 public class Printer {
 
     public final static Printer instance = new Printer();
+    public static final int TIMER1 = 250;
+    public static final int TIMER2 = 100;
     private String COLOR_MAGENTA = "\u001b[34m";
     private String COLOR_BLUE = "\u001b[35m";
     private String COLOR_BACK = "\u001b[37m";
@@ -47,13 +49,13 @@ public class Printer {
         /* if this choice is not the only child of parent, run parent
             to make other child choices visible
          */
-        else if (choice.getParentChoice().getListOfChoices().size() > 1) {
-            choice.getParentChoice().runChoiceSelection();
+        else if (choice.getParent().getListOfChoices().size() > 1) {
+            choice.getParent().runChoiceSelection();
         }
 
         /* if this choice is the only child, then run grandparent */
         else {
-            choice.getParentChoice().getParentChoice().runChoiceSelection();
+            choice.getParent().getParent().runChoiceSelection();
         }
     }
 
@@ -61,9 +63,9 @@ public class Printer {
     public void printActiveText(Choice choice) throws InterruptedException {
         if (choice.getActiveText() != null) {
             System.out.println(choice.getActiveText());
-            Thread.sleep(500);
+            Thread.sleep(TIMER1);
             System.out.println(".");
-            Thread.sleep(250);
+            Thread.sleep(TIMER2);
             System.out.println(".");
         } else {
             Thread.sleep(250);

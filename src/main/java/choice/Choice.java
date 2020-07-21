@@ -6,8 +6,11 @@ import inventory.Item;
 import mission.Mission;
 import mission.Status;
 import printer.Printer;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
 import static choice.State.REGULAR;
 
 public class Choice {
@@ -17,10 +20,10 @@ public class Choice {
 
     protected State state = REGULAR;
 
-    protected Choice parentChoice;
-    protected Choice linkedChoice;
+    protected Choice parent;
+    protected HashSet<Choice> linkedChoice = new HashSet<>();
     protected Choice linkedDeactivateChoice;
-    private ArrayList<Choice> listOfChoices = new ArrayList<Choice>();
+    private ArrayList<Choice> listOfChoices = new ArrayList<>();
 
     protected Mission initiateMission;
     protected Mission completeMission;
@@ -86,14 +89,14 @@ public class Choice {
         this.state = state;
     }
 
-    public Choice getParentChoice() {return this.parentChoice;}
+    public Choice getParent() {return this.parent;}
 
     public void setInitiateMission(Mission initiateMission) {
         this.initiateMission = initiateMission;
     }
 
-    public void setParentChoice(Choice c) {
-        this.parentChoice = c;
+    public void setParent(Choice c) {
+        this.parent = c;
     }
 
     public String getActiveText() {
@@ -107,14 +110,18 @@ public class Choice {
     public Mission getCompleteMission() {return this.completeMission;}
     public Mission getInitiateMission() {return this.initiateMission;}
 
-
-    public void setLinkedChoice(Choice c) {
-        this.linkedChoice = c;
-    }
+    /**
+     * Add choice that will be activated on selecting this choice. There can be multiple
+     * linked choices.
+     * @param c
+     * @return void
+     */
+    public void addLinkedChoice(Choice c) {
+        this.linkedChoice.add(c);    }
 
     public void addChoice(Choice c) throws Exception {
         if (!this.listOfChoices.contains(c)) {
-            c.setParentChoice(this);
+            c.setParent(this);
             this.listOfChoices.add(c);
         } else throw new Exception("Choice already exists!");
     }
@@ -173,20 +180,20 @@ public class Choice {
         return UserInput.getInstance().getUserSelection(this);
     }
 
-    /* If its a final choice, then runs parent's parent choice
-        used by FINAL, FINAL_LINKED States
+    /** If its a FINAL choice, removes it and then runs parent choice or parent's parent choice
+        @return void
      */
     public void checkFinalChoice() throws Exception {
         assert (this.listOfChoices.size() == 0);
 
 
-        if (this.parentChoice.parentChoice != null) {
-            if (this.parentChoice.listOfChoices.size() > 1) {
-                this.parentChoice.removeChoice(this);
-                this.parentChoice.runChoiceSelection();
+        if (this.parent.parent != null) {
+            if (this.parent.listOfChoices.size() > 1) {
+                this.parent.removeChoice(this);
+                this.parent.runChoiceSelection();
             } else {
-                this.parentChoice.parentChoice.removeChoice(this.parentChoice);
-                this.parentChoice.parentChoice.runChoiceSelection();
+                this.parent.parent.removeChoice(this.parent);
+                this.parent.parent.runChoiceSelection();
 
             }
 
@@ -198,24 +205,31 @@ public class Choice {
 //        }
     }
 
-    /* activates any linked choice, called first everytime during execution of a choice */
+    /** Activates all linked choices, called everytime during execution of a choice
+     * @return void
+     * */
     private void checkLinkedChoice() throws Exception {
-        this.linkedChoice.parentChoice.addChoice(this.linkedChoice);
+        for (Choice c : this.linkedChoice) {
+            c.parent.addChoice(c);
+
+        }
     }
 
     private void checkLinkedDeactivateChoice() {
-        this.linkedDeactivateChoice.parentChoice.removeChoice(this.linkedDeactivateChoice);
+        this.linkedDeactivateChoice.parent.removeChoice(this.linkedDeactivateChoice);
     }
 
 
-    /* MAIN FUNCTION
-        checks any linked choice to activate or deactivate first,
-        then executes choice based on State
+    /** Main choice running function
+     * checks any linked choice to activate or deactivate first,
+     * then executes choice based on State
+     * @return void
+
      */
     public void runChoiceSelection() throws Exception {
         this.useItem();
         this.gainItem();
-        if (this.linkedChoice != null) {
+        if (this.linkedChoice.size() != 0) {
             this.checkLinkedChoice();
         }
 

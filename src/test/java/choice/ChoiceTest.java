@@ -37,7 +37,7 @@ public class ChoiceTest {
         Assert.assertEquals(2, CMain.getChoices().size());
 
         CMain.addChoice(C3);
-        Assert.assertEquals(CMain, C3.parentChoice);
+        Assert.assertEquals(CMain, C3.parent);
     }
 
     @Test(expected = Exception.class)

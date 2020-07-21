@@ -35,7 +35,7 @@ public class Main {
         Mission MAIN_MISSION = new Mission("Main objective");
 
         Choice c1 = new Choice("Explore the city", "..");
-        c1.setLinkedChoice(null);
+        //c1.addLinkedChoice(null);
         Choice c2 = new Choice("Head outside city", "Heading to the east gate..");
 
         Choice c1a = new Choice("Go to the Market place");
@@ -64,6 +64,7 @@ public class Main {
         Choice c1ba = new Choice("Pick up fruits in baskets", "How many baskets to fill..?");
         c1b.addChoice(c1ba);
         Choice c1baa = new Choice("Fill 3 baskets"); Choice c1bab = new Choice("Fill 4 baskets");
+        c1baa.setLinkedDeactivateChoice(c1bab);c1bab.setLinkedDeactivateChoice(c1baa);
         c1baa.setState(FINAL); c1bab.setState(FINAL);
         c1ba.addChoice(c1baa); c1ba.addChoice(c1bab);
 
@@ -71,9 +72,9 @@ public class Main {
         c1baa.setGainItem(fruitBasket3); c1bab.setGainItem(fruitBasket4);
 
         Choice c1aac = new Choice("Hand over 3 fruit baskets"), c1aad = new Choice("Hand over 4 fruit baskets");
-        c1baa.setLinkedChoice(c1aac);c1bab.setLinkedChoice(c1aad);
+        c1baa.addLinkedChoice(c1aac);c1bab.addLinkedChoice(c1aad);
         c1aac.setState(LINKED_FINAL); c1aad.setState(LINKED_FINAL);
-        c1aac.setParentChoice(c1aa); c1aad.setParentChoice(c1aa);c1aac.setUseItem(fruitBasket3);c1aad.setUseItem(fruitBasket4);
+        c1aac.setParent(c1aa); c1aad.setParent(c1aa);c1aac.setUseItem(fruitBasket3);c1aad.setUseItem(fruitBasket4);
         c1aac.setCompleteMission(DELIVER_FRUITS); c1aad.setCompleteMission(DELIVER_FRUITS);
 
         c1aa.addChoice(Arrays.asList(c1aaa, c1aab));
@@ -83,7 +84,7 @@ public class Main {
         Choice c2aa = new Choice("Ask them how their job is", "Well, not much going on here..");
         Choice c2ab = new Choice("Give them a nasty look", "One of them gets mad and chases you!..");
         Choice c2ac = new Choice("Ask them about the bag you found", "I found this abandoned bag by the gate..");
-        c2ac.setParentChoice(c2a);
+        c2ac.setParent(c2a);
         Choice c2aca = new Choice("It belongs to one of them, return it gracefully");
         c2aca.setState(State.LINKED_FINAL);
         Item abandoned_bag = new Item("Abandoned bag");
@@ -106,39 +107,54 @@ public class Main {
         Choice c2bba = new Choice("Ambushed...? Where were you ambushed?", "In the edge of the forest beyond the road.");
         Choice c2bbaa = new Choice("So you have your belongings still there..?", "I only had a few things and bandits probably made off with it.");
         Choice c2bbb = new Choice("What is your name? Where were you travelling to?", "I'm Malik. I was on a journey to Soqan for trade.");
-        Choice c2bbba = new Choice("Alright, I'll bring you to the city inn, you can rest there a bit and get back your strength.", "Thank you, I'll be grateful.");
+        Choice c2bc = new Choice("Alright traveller, I'll bring you to the city inn, you can rest there a bit and get back your strength.", "Thank you, I'll be grateful.");
+        c2bbb.setState(FINAL);
         Mission HELP_TRAVELLER = new Mission("Take the traveller Malik to the city inn.");
         Mission INSPECT_AMBUSH = new Mission("Visit the edge of the forest where Malik was attacked.");
-        c2bbba.setState(LINKED_FINAL); c2bbba.setLinkedDeactivateChoice(c2bb);c2bbba.setInitiateMission(HELP_TRAVELLER);
-        c2bbb.addChoice(c2bbba);
+        c2bc.setState(LINKED_FINAL); c2bc.setInitiateMission(HELP_TRAVELLER);
+        c2bc.setParent(c2b); c2bc.setLinkedDeactivateChoice(c2bb);
+        c2bbb.addLinkedChoice(c2bc);
+
         Choice c1ca = new Choice("Drop off Malik at the inn.", "Here it is. Rest here and I'll be back soon. 'Thank you.'");
         c1ca.setInitiateMission(INSPECT_AMBUSH);
 
-        Choice c2bc = new Choice("Get on the off-path to the edge of Sheba Forest", "The clearing has tracks of boots and some destroyed branches and leaves. There is a blood stain on the ground and some torn pieces belonging to a cloth. You also find a decorative band, with red and yellow stripes.");
-
+        Choice c2bd = new Choice("Get on the off-path to the edge of Sheba Forest", "The clearing has tracks of boots and some destroyed branches and leaves. There is a blood stain on the ground and some torn pieces belonging to a cloth. You also find a decorative band, with red and yellow stripes.");
+        Item DECOR_BAND = new Item("Decorative band with red & yellow stripes");
+        c2bd.setGainItem(DECOR_BAND);
         Mission VISIT_MALIK = new Mission("Pay Malik a visit at the inn.");
-        c2bc.setCompleteMission(INSPECT_AMBUSH);
-        c1ca.setLinkedChoice(c2bc);c2bc.setParentChoice(c2b); c2bc.setState(LINKED_FINAL);
+        c2bd.setCompleteMission(INSPECT_AMBUSH);
+        c1ca.addLinkedChoice(c2bd);c2bd.setParent(c2b); c2bd.setState(LINKED_FINAL);
         Choice c1cb = new Choice("Visit Malik at the Inn", "Surprisingly Malik seems to have left, his room is empty.");
-        c1cb.setCompleteMission(VISIT_MALIK); c1cb.setParentChoice(c1c);
-        c2bc.setLinkedChoice(c1cb);
-        c2bc.setInitiateMission(VISIT_MALIK);
-        c1ca.setState(LINKED_FINAL); c1ca.setParentChoice(c1c);c1ca.setCompleteMission(HELP_TRAVELLER);
-        c2bbb.setLinkedChoice(c1ca);
+        c1cb.setParent(c1c);
+        c2bd.addLinkedChoice(c1cb);
+        c2bd.setInitiateMission(VISIT_MALIK);
+        c1ca.setState(LINKED_FINAL); c1ca.setParent(c1c);c1ca.setCompleteMission(HELP_TRAVELLER);
+        c2bbb.addLinkedChoice(c1ca);
         c2bb.addChoice(c2bba); c2bb.addChoice(c2bbb);
         c2bbaa.setState(FINAL);
         c2bba.addChoice(c2bbaa);
         c2b.addChoice(Arrays.asList(c2ba, c2bb));
 
         Choice c1cba = new Choice("Ask the innkeeper where he is", "'A bit ago, another stranger came in and inquired about any out-of-town travellers recently. Malik saw the man, and seemed to be alarmed.. After the not-so-friendly stranger left, Malik also left secretively and asked the innkeeper to not mention him to anyone else.");
+        c1cba.setCompleteMission(VISIT_MALIK);
         Mission IDENTITY_OF_MALIK = new Mission("Discover the indentity of Malik and find him. Something seems strange about him.");
         c1cba.setState(LINKED_FINAL); c1cba.setInitiateMission(IDENTITY_OF_MALIK);c1cb.addChoice(c1cba);
+
+        Choice c1da = new Choice("You find Malik at the courtyard, approach towards him.", "He is speaking with the Imam and hands over a small leather bag to him.");
+        Choice c1daa = new Choice("Ask him if he is alright..", "'I'm good, just walked over here for prayers.");
+        Choice c1dab = new Choice("Inquire about the bag he handed over.. ", "On second thoughts you don't mention that you saw it.");
+        Choice c1daba = new Choice("Show him the decorative item you fond on the attack site.", "'Its from one of my possesions, got ripped off.' However you are unconvinced as the band seems to be of a women's head gear. You walk back with him to the inn.");
+        c1daa.setState(FINAL); c1daba.setState(FINAL);
+        c1dab.addChoice(c1daba);
+        c1da.addChoice(Arrays.asList(c1daa, c1dab));
+        c1da.setParent(c1d);
+        c1cba.addLinkedChoice(c1da);
 
 
 
         Choice c2c = new Choice("Inspect abandoned bag near the gate");
         Choice c2ca = new Choice("Put it in inventory");
-        c2ca.setLinkedChoice(c2ac);
+        c2ca.addLinkedChoice(c2ac);
         c2ca.setGainItem(abandoned_bag);
         Mission ABANDONED_BAG = new Mission("Find the owner of the bag.");
         c2ca.setInitiateMission(ABANDONED_BAG);
