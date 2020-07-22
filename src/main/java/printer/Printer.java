@@ -29,6 +29,7 @@ public class Printer {
         if (choice.getListOfChoices().size() != 0) {
             int i = 0;
             int j = 0;
+
             for (Choice c : choice.getListOfChoices()) {
                 if (c.getCompleteMission() == null || c.getCompleteMission().getStatus() != Status.UNDISCOVERED) {
                     if (j == 0) {

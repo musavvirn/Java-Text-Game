@@ -27,6 +27,7 @@ public class Choice {
 
     protected Mission initiateMission;
     protected Mission completeMission;
+    protected Mission updateMission;
 
     protected Item gainItem;
     protected Item useItem;
@@ -88,6 +89,8 @@ public class Choice {
     public void setState(State state) {
         this.state = state;
     }
+
+    public void setUpdateMission(Mission m) {this.updateMission = m;}
 
     public Choice getParent() {return this.parent;}
 
@@ -173,6 +176,14 @@ public class Choice {
         if (this.completeMission != null) {
             this.completeMission.setStatus(Status.COMPLETED);
         }
+
+//        if (this.updateMission != null) {
+//            this.updateMission.setStatus(Status.UPDATED);
+//        }
+    }
+
+    public void updateMission() {
+        this.updateMission.update();
     }
 
     /* Determine user input, either a valid choice, (B), or invalid and promp again */
@@ -185,7 +196,6 @@ public class Choice {
      */
     public void checkFinalChoice() throws Exception {
         assert (this.listOfChoices.size() == 0);
-
 
         if (this.parent.parent != null) {
             if (this.parent.listOfChoices.size() > 1) {
@@ -229,6 +239,10 @@ public class Choice {
     public void runChoiceSelection() throws Exception {
         this.useItem();
         this.gainItem();
+//        if (this.updateMission != null) {
+//            this.updateMission();
+//
+//        }
         if (this.linkedChoice.size() != 0) {
             this.checkLinkedChoice();
         }

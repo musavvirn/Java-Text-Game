@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Game started.. ");
         Scanner input = new Scanner(System.in);
-        Thread.sleep(2000);
+        Thread.sleep(500);
 
         /* initiating Locations */
         MapManager M1 = MapManager.getInstance();
@@ -42,6 +42,8 @@ public class Main {
         Choice c1b = new Choice("Head to the Gardens");
         Choice c1c = new Choice("Head to the Inn");
         Choice c1d = new Choice("Visit the Mosque courtyard");
+
+
 
         c1.addChoice(Arrays.asList(c1a, c1b, c1c, c1d));
         Choice c1aa = new Choice("Approach the fruit seller");
@@ -101,6 +103,16 @@ public class Main {
         c2a.addChoice(Arrays.asList(c2aa, c2ab));
         c2ab.addChoice(Arrays.asList(c2aba, c2abb));
 
+        Choice c2c = new Choice("Inspect abandoned bag near the gate");
+        Choice c2ca = new Choice("Put it in inventory");
+        c2ca.addLinkedChoice(c2ac);
+        c2ca.setGainItem(abandoned_bag);
+        Mission ABANDONED_BAG = new Mission("Find the owner of the bag.");
+        c2ca.setInitiateMission(ABANDONED_BAG);
+        c2aca.setCompleteMission(ABANDONED_BAG);
+        c2c.addChoice(Arrays.asList(c2ca));
+        c2ca.setState(State.LINKED_FINAL);
+
         Choice c2b = new Choice("Take the West path into the farm", "The farmer and a man who looks like not from around here are conversing.. the traveller looks weary and exhausted..");
         Choice c2ba = new Choice("Ask the farmer whats going on", "'This traveller looks like he needs some help but he won't explain much.");
         Choice c2bb = new Choice("Inquire the traveller where he is coming from", "'I'm a trader from Ayvan.. attacked by bandits on the way and barely escaped.");
@@ -110,6 +122,10 @@ public class Main {
         Choice c2bc = new Choice("Alright traveller, I'll bring you to the city inn, you can rest there a bit and get back your strength.", "Thank you, I'll be grateful.");
         c2bbb.setState(FINAL);
         Mission HELP_TRAVELLER = new Mission("Take the traveller Malik to the city inn.");
+        HELP_TRAVELLER.addUpdate("Visit the traveller sometime later.");
+        HELP_TRAVELLER.addUpdate("Find Malik in the city.");
+        HELP_TRAVELLER.addUpdate("Meet Malik when he leaves at first light in the morning.");
+        HELP_TRAVELLER.addUpdate("Malik has postponed leaving - meet up with him later.");
         Mission INSPECT_AMBUSH = new Mission("Visit the edge of the forest where Malik was attacked.");
         c2bc.setState(LINKED_FINAL); c2bc.setInitiateMission(HELP_TRAVELLER);
         c2bc.setParent(c2b); c2bc.setLinkedDeactivateChoice(c2bb);
@@ -121,6 +137,7 @@ public class Main {
         Choice c2bd = new Choice("Get on the off-path to the edge of Sheba Forest", "The clearing has tracks of boots and some destroyed branches and leaves. There is a blood stain on the ground and some torn pieces belonging to a cloth. You also find a decorative band, with red and yellow stripes.");
         Item DECOR_BAND = new Item("Decorative band with red & yellow stripes");
         c2bd.setGainItem(DECOR_BAND);
+
         Mission VISIT_MALIK = new Mission("Pay Malik a visit at the inn.");
         c2bd.setCompleteMission(INSPECT_AMBUSH);
         c1ca.addLinkedChoice(c2bd);c2bd.setParent(c2b); c2bd.setState(LINKED_FINAL);
@@ -128,7 +145,9 @@ public class Main {
         c1cb.setParent(c1c);
         c2bd.addLinkedChoice(c1cb);
         c2bd.setInitiateMission(VISIT_MALIK);
-        c1ca.setState(LINKED_FINAL); c1ca.setParent(c1c);c1ca.setCompleteMission(HELP_TRAVELLER);
+        c1ca.setState(LINKED_FINAL); c1ca.setParent(c1c);
+
+        c1ca.setCompleteMission(HELP_TRAVELLER);
         c2bbb.addLinkedChoice(c1ca);
         c2bb.addChoice(c2bba); c2bb.addChoice(c2bbb);
         c2bbaa.setState(FINAL);
@@ -136,39 +155,45 @@ public class Main {
         c2b.addChoice(Arrays.asList(c2ba, c2bb));
 
         Choice c1cba = new Choice("Ask the innkeeper where he is", "'A bit ago, another stranger came in and inquired about any out-of-town travellers recently. Malik saw the man, and seemed to be alarmed.. After the not-so-friendly stranger left, Malik also left secretively and asked the innkeeper to not mention him to anyone else.");
-        c1cba.setCompleteMission(VISIT_MALIK);
         Mission IDENTITY_OF_MALIK = new Mission("Discover the indentity of Malik and find him. Something seems strange about him.");
         c1cba.setState(LINKED_FINAL); c1cba.setInitiateMission(IDENTITY_OF_MALIK);c1cb.addChoice(c1cba);
-
-        Choice c1da = new Choice("You find Malik at the courtyard, approach towards him.", "He is speaking with the Imam and hands over a small leather bag to him.");
+        Mission VISIT_MALIK_BEFORE_DEPART = new Mission("Visit Malik when he leaves the city at first light.");
+        Choice c1da = new Choice("You find Malik at the courtyard, approach towards him.", "He is speaking with the Imam and hands over a small leather pouch to him.");
         Choice c1daa = new Choice("Ask him if he is alright..", "'I'm good, just walked over here for prayers.");
-        Choice c1dab = new Choice("Inquire about the bag he handed over.. ", "On second thoughts you don't mention that you saw it.");
-        Choice c1daba = new Choice("Show him the decorative item you fond on the attack site.", "'Its from one of my possesions, got ripped off.' However you are unconvinced as the band seems to be of a women's head gear. You walk back with him to the inn.");
-        c1daa.setState(FINAL); c1daba.setState(FINAL);
+        Choice c1dab = new Choice("Inquire about the pouch he handed over.. ", "On second thoughts you don't mention that you saw it.");
+        Choice c1daba = new Choice("Show him the decorative item you fond on the attack site.", "'Its from one of my possesions, got ripped off.' However you are unconvinced as the band seems to be of a women's head gear. Malik departs to get back to the inn for the night." +
+                "You decide to spend some time at the courtyard. As you feel the cool water from the fountain on your face and you see people slowly leaving to their homes for the evening. Only a few remain, amongst them the Imam, and a man with distinctive black head gear and rings on his finger, whom you recognize as an Officer of the Sultan's advisors.");
+        c1daa.setState(FINAL); c1daba.setState(LINKED_FINAL);
+        c1daba.setInitiateMission(VISIT_MALIK_BEFORE_DEPART);
         c1dab.addChoice(c1daba);
         c1da.addChoice(Arrays.asList(c1daa, c1dab));
         c1da.setParent(c1d);
         c1cba.addLinkedChoice(c1da);
 
+        Choice c1db = new Choice("Inquire to the Imam about what Malik entrusted to him.", "The Imam refuses to divulge and says it's not of your concern.");
+        c1db.setParent(c1d); c1daba.addLinkedChoice(c1db);
+        c1db.setState(FINAL);
 
+        Choice c1dc = new Choice("You get approached by the Officer.", "'I have a task for your, out of the city. Meet me here in the morning, ready to travel for some days.'");
+        Mission MEET_OFFICER = new Mission("The sultan's officer Arkut will be waiting for you in the Mosque courtyard next morning");
+        c1dc.setState(FINAL);c1dc.setParent(c1d); c1dc.setInitiateMission(MEET_OFFICER);
+        c1daba.addLinkedChoice(c1dc);
 
-        Choice c2c = new Choice("Inspect abandoned bag near the gate");
-        Choice c2ca = new Choice("Put it in inventory");
-        c2ca.addLinkedChoice(c2ac);
-        c2ca.setGainItem(abandoned_bag);
-        Mission ABANDONED_BAG = new Mission("Find the owner of the bag.");
-        c2ca.setInitiateMission(ABANDONED_BAG);
-        c2aca.setCompleteMission(ABANDONED_BAG);
-        Choice c2cb = new Choice("Leave it where it was");
-        c2c.addChoice(Arrays.asList(c2ca, c2cb));
-        c2ca.setState(State.LINKED_FINAL);
-        c2ca.setLinkedDeactivateChoice(c2cb);
+        Choice c1cd = new Choice("Meet Malik before he departs", "Malik and the Innkeeper seem devastated. There was an attempted burglary last night, and it seems the burglars were looking for somthing or someone. Nothing was actually stolen.");
+        Choice c1cda = new Choice("'Innkeeper - do you suspect someone?", "I .. don't. I don't what to say.. they broke in to some guests rooms upstairs and that's when guards were alerted and they escaped.");
+        Choice c1cdb = new Choice("Advise Malik not to leave the city, it may not be safe.", "You will meet up with him later again.");
+        Mission MEET_MALIK_LATER = new Mission("Malik has postponed his departure - meet up with him later.");
+        c1cd.setCompleteMission(VISIT_MALIK_BEFORE_DEPART);
+        c1cdb.setInitiateMission(MEET_MALIK_LATER);
+        c1cda.setState(FINAL);
+        c1cdb.setState(FINAL);
+
+        c1cd.addChoice(Arrays.asList(c1cda, c1cdb));
+
 
         ArrayList<Choice> lc1 = new ArrayList<Choice>(Arrays.asList(c1, c2));
         c2.addChoice(Arrays.asList(c2a, c2b, c2c));
-
         MAIN_MISSION.getStartingChoice().addChoice(lc1);
-
         MissionManager.getInstance().addQuest(MAIN_MISSION);
         MAIN_MISSION.activate();
 

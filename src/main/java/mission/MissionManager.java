@@ -41,7 +41,14 @@ public class MissionManager implements PrintItems {
                 System.out.println(String.format("Mission failed: %s", mission.getName()));
                 listOfActiveMission.remove(mission);
 
-            } else throw new Exception("Invalid mission status update.");
+            }
+
+            else if (status == Status.UPDATED) {
+                System.out.println(String.format("Mission updated: %s", mission.getName()));
+
+            }
+
+            else throw new Exception("Invalid mission status update.");
 
         } else {
             mapOfQuest.replace(mission, status);
