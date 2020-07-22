@@ -27,6 +27,7 @@ public enum State {
     FINAL {
         @Override
         public void execute(Choice c) throws Exception {
+            c.checkLinkedMission();
             c.printEndText();
             c.checkFinalChoice();
             c.getUserSelection().runChoiceSelection();
@@ -42,6 +43,7 @@ public enum State {
             c.getUserSelection().runChoiceSelection();
         }
     },
+
 
     LINKED_FINAL {
         @Override

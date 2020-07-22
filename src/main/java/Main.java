@@ -159,14 +159,16 @@ public class Main {
         c1cba.setState(LINKED_FINAL); c1cba.setInitiateMission(IDENTITY_OF_MALIK);c1cb.addChoice(c1cba);
         Mission VISIT_MALIK_BEFORE_DEPART = new Mission("Visit Malik when he leaves the city at first light.");
         Choice c1da = new Choice("You find Malik at the courtyard, approach towards him.", "He is speaking with the Imam and hands over a small leather pouch to him.");
-        Choice c1daa = new Choice("Ask him if he is alright..", "'I'm good, just walked over here for prayers.");
+        //Choice c1daa = new Choice("Ask him if he is alright..", "'I'm good, just walked over here for prayers.");
         Choice c1dab = new Choice("Inquire about the pouch he handed over.. ", "On second thoughts you don't mention that you saw it.");
         Choice c1daba = new Choice("Show him the decorative item you fond on the attack site.", "'Its from one of my possesions, got ripped off.' However you are unconvinced as the band seems to be of a women's head gear. Malik departs to get back to the inn for the night." +
                 "You decide to spend some time at the courtyard. As you feel the cool water from the fountain on your face and you see people slowly leaving to their homes for the evening. Only a few remain, amongst them the Imam, and a man with distinctive black head gear and rings on his finger, whom you recognize as an Officer of the Sultan's advisors.");
-        c1daa.setState(FINAL); c1daba.setState(LINKED_FINAL);
+        //c1daa.setState(FINAL);
+        c1daba.setState(LINKED_FINAL); c1daba.setLinkedDeactivateChoice(c1da);
+        c1daba.setCompleteMission(VISIT_MALIK);
         c1daba.setInitiateMission(VISIT_MALIK_BEFORE_DEPART);
         c1dab.addChoice(c1daba);
-        c1da.addChoice(Arrays.asList(c1daa, c1dab));
+        c1da.addChoice(Arrays.asList(c1dab));
         c1da.setParent(c1d);
         c1cba.addLinkedChoice(c1da);
 
@@ -176,19 +178,21 @@ public class Main {
 
         Choice c1dc = new Choice("You get approached by the Officer.", "'I have a task for your, out of the city. Meet me here in the morning, ready to travel for some days.'");
         Mission MEET_OFFICER = new Mission("The sultan's officer Arkut will be waiting for you in the Mosque courtyard next morning");
-        c1dc.setState(FINAL);c1dc.setParent(c1d); c1dc.setInitiateMission(MEET_OFFICER);
+        c1dc.setState(LINKED_FINAL);c1dc.setParent(c1d); c1dc.setInitiateMission(MEET_OFFICER);
+        c1daba.addLinkedChoice(c1dc);
         c1daba.addLinkedChoice(c1dc);
 
         Choice c1cd = new Choice("Meet Malik before he departs", "Malik and the Innkeeper seem devastated. There was an attempted burglary last night, and it seems the burglars were looking for somthing or someone. Nothing was actually stolen.");
         Choice c1cda = new Choice("'Innkeeper - do you suspect someone?", "I .. don't. I don't what to say.. they broke in to some guests rooms upstairs and that's when guards were alerted and they escaped.");
-        Choice c1cdb = new Choice("Advise Malik not to leave the city, it may not be safe.", "You will meet up with him later again.");
+        Choice c1cdaa = new Choice("Advise Malik not to leave the city, it may not be safe.", "You will meet up with him later again.");
         Mission MEET_MALIK_LATER = new Mission("Malik has postponed his departure - meet up with him later.");
+        c1dc.addLinkedChoice(c1cd);
+        c1cd.setParent(c1c);
         c1cd.setCompleteMission(VISIT_MALIK_BEFORE_DEPART);
-        c1cdb.setInitiateMission(MEET_MALIK_LATER);
-        c1cda.setState(FINAL);
-        c1cdb.setState(FINAL);
+        c1cdaa.setInitiateMission(MEET_MALIK_LATER);
+        c1cdaa.setState(FINAL); c1cdaa.setLinkedDeactivateChoice(c1cd);
 
-        c1cd.addChoice(Arrays.asList(c1cda, c1cdb));
+        c1cd.addChoice(Arrays.asList(c1cda)); c1cda.addChoice(c1cdaa);
 
 
         ArrayList<Choice> lc1 = new ArrayList<Choice>(Arrays.asList(c1, c2));

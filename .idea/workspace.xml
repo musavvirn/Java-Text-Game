@@ -31,8 +31,8 @@
         <option value="Singleton" />
         <option value="Interface" />
         <option value="AnnotationType" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -193,26 +193,26 @@
     </state>
     <state x="-1373" y="176" key="FileChooserDialogImpl/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594597923688" />
     <state x="389" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1593841537771" />
-    <state width="1323" height="479" key="GridCell.Tab.0.bottom" timestamp="1595381967851">
+    <state width="1323" height="58" key="GridCell.Tab.0.bottom" timestamp="1595383114574">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594971183107" />
-    <state width="1323" height="479" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1595381967851" />
-    <state width="1323" height="479" key="GridCell.Tab.0.center" timestamp="1595381967851">
+    <state width="1323" height="58" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1595383114574" />
+    <state width="1323" height="58" key="GridCell.Tab.0.center" timestamp="1595383114573">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594971183107" />
-    <state width="1323" height="479" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1595381967851" />
-    <state width="1323" height="479" key="GridCell.Tab.0.left" timestamp="1595381967850">
+    <state width="1323" height="58" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1595383114573" />
+    <state width="1323" height="58" key="GridCell.Tab.0.left" timestamp="1595383114573">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594971183107" />
-    <state width="1323" height="479" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1595381967850" />
-    <state width="1323" height="479" key="GridCell.Tab.0.right" timestamp="1595381967851">
+    <state width="1323" height="58" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1595383114573" />
+    <state width="1323" height="58" key="GridCell.Tab.0.right" timestamp="1595383114574">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1366.768/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1594971183107" />
-    <state width="1323" height="479" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1595381967851" />
+    <state width="1323" height="58" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1595383114574" />
     <state width="1323" height="236" key="GridCell.Tab.1.bottom" timestamp="1595318507769">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

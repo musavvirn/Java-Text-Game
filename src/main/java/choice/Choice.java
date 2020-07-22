@@ -208,12 +208,14 @@ public class Choice {
             }
 
         }
+
 //        if (this.parentChoice.parentChoice != null) {
 //
 //            this.parentChoice.parentChoice.removeChoice(this.parentChoice);
 //            this.parentChoice.parentChoice.runChoiceSelection();
 //        }
     }
+
 
     /** Activates all linked choices, called everytime during execution of a choice
      * @return void
